@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; script-src 'self' 'wasm-unsafe-eval'; worker-src 'self' blob:; connect-src 'self' data: blob:">
+  <title>Partwright</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header id="topbar">
+    <div id="brand"></div>
+    <div id="docname" contenteditable="true" spellcheck="false">Untitled</div>
+    <div id="filebtns"></div>
+    <div class="spacer"></div>
+    <div id="busy" class="hidden">Rebuilding...</div>
+    <button id="helpbtn" class="iconbtn" title="Help and shortcuts (F1)"></button>
+  </header>
+  <nav id="toolbar"></nav>
+  <main id="main">
+    <aside id="left">
+      <div id="tree"></div>
+      <div id="dialog" class="hidden"></div>
+    </aside>
+    <section id="viewport">
+      <div id="cube"></div>
+      <div id="viewtools"></div>
+      <div id="dyn" class="hidden"><input id="dyninput" spellcheck="false" autocomplete="off"></div>
+      <div id="info" class="hidden"></div>
+      <div id="sketchbar" class="hidden"></div>
+      <div id="status"></div>
+    </section>
+  </main>
+  <footer id="tabs"><div class="tab active">Part Studio 1</div></footer>
+  <div id="menus"></div>
+  <div id="modals"></div>
+  <div id="toasts"></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+{
+  "name": "partwright",
+  "productName": "Partwright",
+  "version": "0.1.0",
+  "description": "Partwright: a parametric 3D part modeller with sketches, features and STEP/STL exchange.",
+  "main": "main.js",
+  "author": "Partwright",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "electron": "44.7.0",
+    "electron-builder": "26.15.3",
+    "esbuild": "0.25.10",
+    "playwright-core": "1.56.1",
+    "replicad": "1.1.0",
+    "replicad-opencascadejs": "1.1.0",
+    "three": "0.185.0"
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "start": "node build.mjs && electron .",
+    "test": "node test/kernel.test.mjs",
+    "test:e2e": "node build.mjs && node test/e2e.mjs",
+    "dist": "node build.mjs && electron-builder"
+  },
+  "build": {
+    "appId": "app.partwright.modeller",
+    "productName": "Partwright",
+    "artifactName": "Partwright-${version}-${os}-${arch}.${ext}",
+    "files": [
+      "main.js",
+      "preload.js",
+      "build/**/*",
+      "!build/**/*.map",
+      "assets/icon.png",
+      "LICENSE"
+    ],
+    "directories": {
+      "output": "dist",
+      "buildResources": "assets"
+    },
+    "fileAssociations": [
+      {
+        "ext": "pwd",
+        "name": "Partwright Part Studio",
+        "role": "Editor"
+      },
+      {
+        "ext": [
+          "step",
+          "stp"
+        ],
+        "name": "STEP Model",
+        "role": "Viewer"
+      },
+      {
+        "ext": "stl",
+        "name": "STL Mesh",
+        "role": "Viewer"
+      }
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "assets/icon.png"
+    },
+    "portable": {
+      "artifactName": "Partwright-${version}-portable.exe"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "artifactName": "Partwright-${version}-setup.exe",
+      "license": "LICENSE"
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "category": "public.app-category.graphics-design",
+      "icon": "assets/icon.png"
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "category": "Graphics",
+      "icon": "assets/icon.png"
+    }
+  }
+}
